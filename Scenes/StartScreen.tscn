@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/TextBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Button(p).png" type="Texture" id=2]
+[ext_resource path="res://Assets/Button.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Controls.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/GOTHIC.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://Scenes/StartScreen.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Music/track#2.ogg" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 150
+outline_color = Color( 0.407843, 0.407843, 0.407843, 1 )
+use_filter = true
+extra_spacing_char = 10
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+outline_color = Color( 0.407843, 0.407843, 0.407843, 1 )
+use_filter = true
+extra_spacing_char = 10
+font_data = ExtResource( 5 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Sprite" parent="."]
+position = Vector2( 960, 316 )
+texture = ExtResource( 4 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 192.0
+margin_top = 352.0
+margin_right = 400.0
+margin_bottom = 456.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BaseText" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = -600.0
+margin_top = 96.0
+margin_right = -48.0
+margin_bottom = 281.0
+custom_fonts/font = SubResource( 1 )
+text = "Bound"
+
+[node name="BaseText2" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = 32.0
+margin_top = 560.0
+margin_right = 576.0
+margin_bottom = 684.0
+custom_fonts/font = SubResource( 2 )
+text = "By eyo"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
